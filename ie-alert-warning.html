@@ -18,7 +18,7 @@
 <body>
 <div class="page">
     <h1>旧版 IE 升级提示弹窗代码</h1>
-    <p>此代码是 <a href="https://support.dmeng.net/kill-old-versions-of-ie.html">旧版 Internet Explorer 淘汰行动</a> 一部分，如需查看项目介绍请点击链接查看，本页只介绍弹窗代码。</p>
+    <p>此代码是 <a href="kill-old-versions-of-ie.html">旧版 Internet Explorer 淘汰行动</a> 一部分，如需查看项目介绍请点击链接查看，本页只介绍弹窗代码。</p>
     <div class="hr"></div>
     <h2>弹窗代码的由来</h2>
     <p>2014年8月，旧版IE淘汰行动初上线时，仅提供升级提示页跳转代码，设计思路来自微软官网。采用页面跳转方式本意是，网站在不支持的旧版IE中往往是错版，因此可以直接跳转至升级提示页，避免加载无用的资源的同时在第一时间告诉用户该升级浏览器了。</p>
@@ -30,15 +30,15 @@
     <div class="hr"></div>
     <h2>关于弹窗的设计</h2>
     <p>实际上，旧版IE升级提示弹窗的代码在网上并不少见，大部分是采用头部横幅一句话提示，小部分一张大图加一段简要文字提示，对小白用户并不友好。至今仍使用旧版IE浏览器的用户，除了极少数专业人士，剩下的都是小白。专业人士使用旧版IE往往是出于实际需要（例如测试），无论你如何提示他们都不会升级；而小白用户则往往是因为不懂电脑，因此提示语不能无足轻重，否则无法说服他们升级，也不能只使用术语，否则小白看不懂。</p>
-    <p>因此，本弹窗的设计定位针对小白用户，主配色采用黄、白，整体偏暖，大标题采用深红色并配以加粗的“<span style="color:#da2128;font-weight:normal">危险！</span>”、“<span style="color:#da2128;font-weight:normal">请立即升级！</span>”等警示字样，营造一种需要立即升级的迫切感，引导用户尽快完成升级到新版浏览器。另，特别为使用国产双核浏览器IE兼容模式的用户提供切换至极速内核的示意图，引导用户通过切换内核来正常访问网页，在避免流量流失的同时为用户提供最好的访问体验。<a href="https://support.dmeng.net/ie-alert-warning-example.html">查看弹窗截图</a> </p>
+    <p>因此，本弹窗的设计定位针对小白用户，主配色采用黄、白，整体偏暖，大标题采用深红色并配以加粗的“<span style="color:#da2128;font-weight:normal">危险！</span>”、“<span style="color:#da2128;font-weight:normal">请立即升级！</span>”等警示字样，营造一种需要立即升级的迫切感，引导用户尽快完成升级到新版浏览器。另，特别为使用国产双核浏览器IE兼容模式的用户提供切换至极速内核的示意图，引导用户通过切换内核来正常访问网页，在避免流量流失的同时为用户提供最好的访问体验。<a href="ie-alert-warning-example.html">查看弹窗截图</a> </p>
     <div class="hr"></div>
     <h2>弹窗代码</h2>
     <h3>了解 if IE 和 @cc_on 语句</h3>
     <p>if IE 是IE浏览器特有的条件注释语句，语法如 <code>&lt;!--[if lte IE 9]&gt;&lt;![endif]--&gt;</code>，用于判断IE版本，只在IE9及更旧版IE有效，在IE10、IE11或其他浏览器会被当作普通注释忽略；@cc_on 是IE浏览器特有的条件编译语句，语法如 <code>/*@cc_on @*/</code>，只在IE10及更旧版本IE有效，在IE11或其他浏览器会被当作普通注释忽略。<b>弹窗代码将根据不同情况使用这两种特性，以实现代码只在需要进行升级提示的IE版本中加载，其他浏览器不加载。</b></p>
     <h3>关于双核浏览器的兼容问题</h3>
-    <p>请在 &lt;head&gt; 后弹窗代码前添加如下代码，有了如下代码，内置 Chromium 和 IE 双核的浏览器会优先使用 Chromium 内核，IE也会优先使用最高内核，而非兼容模式。详细解释请参阅 <a href="https://support.dmeng.net/kill-old-versions-of-ie.html">旧版 Internet Explorer 淘汰行动</a> 的代码解释。</p>
+    <p>请在 &lt;head&gt; 后弹窗代码前添加如下代码，有了如下代码，内置 Chromium 和 IE 双核的浏览器会优先使用 Chromium 内核，IE也会优先使用最高内核，而非兼容模式。详细解释请参阅 <a href="kill-old-versions-of-ie.html">旧版 Internet Explorer 淘汰行动</a> 的代码解释。</p>
     <p><b>需要注意的是，以下规定内核的代码并非总是有效，当你的域名是 gov.cn 或 edu.cn 结尾时，或当你的网页内容存在类似“IE9.0或以上浏览器访问达到最佳效果”的提示时，此代码将失效。</b></p>
-    <p>不过，正如前文所述，弹窗代码为双核浏览器用户提供了切换内核示意图，引导用户通过切换内核正常访问。<a href="https://support.dmeng.net/ie-alert-warning-example.html#qqbrowser-example">查看效果截图</a></p>
+    <p>不过，正如前文所述，弹窗代码为双核浏览器用户提供了切换内核示意图，引导用户通过切换内核正常访问。<a href="ie-alert-warning-example.html#qqbrowser-example">查看效果截图</a></p>
     <p>
         <code>&lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;</code><br>
         <code>&lt;meta name=&quot;force-rendering&quot; content=&quot;webkit&quot;/&gt;</code><br>
@@ -111,9 +111,9 @@ document.write(&#x27;\x3Cscript id=&quot;_iealwn_js&quot; src=&quot;https://supp
     <div class="hr"></div>
     <h2>技术参考资料</h2>
     <ul>
-        <li><a href="https://support.dmeng.net/x-ua-compatible.html">X-UA-Compatibility Meta Tag</a></li>
-        <li><a href="https://support.dmeng.net/conditional-comment.html">条件注释说明</a></li>
-        <li><a href="https://support.dmeng.net/360se-renderer.html">360浏览器内核控制标签meta说明</a></li>
+        <li><a href="x-ua-compatible.html">X-UA-Compatibility Meta Tag</a></li>
+        <li><a href="conditional-comment.html">条件注释说明</a></li>
+        <li><a href="360se-renderer.html">360浏览器内核控制标签meta说明</a></li>
     </ul>
     <div class="hr"></div>
     <p>Copyright &copy; 2014 <script>document.write(' - ' + (new Date()).getFullYear())</script> End of IE SUPPORT. All Rights Reserved</p>

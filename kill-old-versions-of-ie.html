@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>旧版 Internet Explorer 淘汰行动「极速浏览器普及计划」</title>
     <meta name="description" content="通过行动代码快速接入旧版IE升级提示，引导用户升级旧版IE到新一代浏览器。这是一个对网站访客负责的行动，这也是一个有利于开发者开发工作的行动。"/>
-    <link rel="canonical" href="https://support.dmeng.net/kill-old-versions-of-ie.html"/>
+    <link rel="canonical" href="kill-old-versions-of-ie.html"/>
     <base href="" target="_blank" />
     <script src="js/er3eport.js"></script>
     <link rel="icon" type="image/png" href="images/favicon.png"/>
@@ -22,32 +22,26 @@
 <p>请不再兼容旧版IE，当用户使用旧版IE（IE11以下版本 或使用该内核的浏览器）访问时提示浏览器升级。</p>
 <div class="hr"></div>
 <h2>发起原因</h2>
-<p>自2016年1月12日起，微软不再为 IE 11 以下版本提供相应支持和更新。没有关键的浏览器安全更新，用户的电脑可能易受有害病毒、间谍软件和其他恶意软件的攻击，它们可以窃取或损害您的业务数据和信息。请参阅 <a href="https://support.dmeng.net/end-of-ie-support.html">微软对旧版 Internet Explorer 的支持服务已终止的说明</a> 。</p>
+<p>自2016年1月12日起，微软不再为 IE 11 以下版本提供相应支持和更新。没有关键的浏览器安全更新，用户的电脑可能易受有害病毒、间谍软件和其他恶意软件的攻击，它们可以窃取或损害您的业务数据和信息。请参阅 <a href="end-of-ie-support.html">微软对旧版 Internet Explorer 的支持服务已终止的说明</a> 。</p>
 <div class="hr"></div>
 <h2>我们的呼吁</h2>
 <p>为了兼容这个曾经的浏览器霸主，网页设计人员需要做大量的代码工作，而且最终效果也始终不能让人满意。对于普通用户而言，低版本IE更是一个岌岌可危的安全隐患，在Windows历史上几次大的木马病毒事件都是利用IE漏洞进行传播。所以，请和我们一起抵制IE6、IE7、IE8、IE9、IE10！</p>
 <div class="hr"></div>
 <h2>更先进的浏览器</h2>
-<p>推荐使用以下浏览器的最新版本。如果你的电脑已有以下浏览器的最新版本则直接使用该浏览器极速模式访问网页即可。</p>
+<p class="targetline">推荐使用以下浏览器的最新版本。如果你的电脑已有以下浏览器的最新版本则直接使用该浏览器极速模式访问<b id="referrer"><script>document.write(targetUrlHTML);</script></b>即可。</p>
+<!-- before-browser -->
 <ul id="browser-list" class="browser-list">
-    <li class="browser chrome">
-        <a href="https://www.google.cn/chrome/thank-you.html?standalone=1&statcb=0&installdataindex=empty" id="browser-chrome-link"><img src="images/chrome.png" width="34" height="34" alt="谷歌浏览器"/>谷歌浏览器 <span id="browser-chrome-badge">Google Chrome</span></a>
+    <li class="browser edge">
+        <a href="https://www.microsoft.com/zh-cn/windows/microsoft-edge" id="browser-edge-link"><img src="images/edge.png" width="34" height="34" alt="微软浏览器"/>微软Edge<span id="browser-edge-badge">Microsoft Edge</span></a>
     </li>
     <li class="browser firefox">
-        <a href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win&lang=zh-CN" id="browser-firefox-link"><img src="images/firefox.png" width="34" height="34" alt="火狐浏览器"/>火狐浏览器<span id="browser-firefox-badge">Mozilla Firefox</span></a>
+        <a href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win&lang=zh-CN" id="browser-firefox-link"><img src="images/firefox.png" width="34" height="34" alt="火狐浏览器"/>火狐(非谋智版)<span id="browser-firefox-badge">Mozilla Firefox</span></a>
     </li>
-    <li class="browser edge">
-        <a href="https://www.microsoft.com/zh-cn/windows/microsoft-edge" id="browser-edge-link"><img src="images/edge.png" width="34" height="34" alt="微软浏览器"/>微软浏览器<span id="browser-edge-badge">Microsoft Edge</span></a>
+    <li class="browser chrome">
+        <a href="https://www.google.cn/chrome/thank-you.html?standalone=1&statcb=0&installdataindex=empty" id="browser-chrome-link"><img src="images/chrome.png" width="34" height="34" alt="谷歌浏览器"/>谷歌Chrome <span id="browser-chrome-badge">Google Chrome</span></a>
     </li>
-    <li class="browser ie2345">
-        <a href="https://dn-2345.cdn.bcebos.com/2345explorer/p8_kbuild_v2.0.exe" id="browser-ie2345-link"><img src="images/ie2345.png" width="34" height="34" alt="2345浏览器"/>2345加速浏览器<span id="browser-ie2345-badge">双内核安全版</span></a>
-    </li>
-    <li class="browser se360">
-        <a href="https://dl.360safe.com/netunion/20140425/360se+75526+n1abed0ce91.exe" id="browser-se360-link"><img src="images/se360.png" width="34" height="34" alt="360安全浏览器"/>360安全浏览器<span id="browser-se360-badge">小白用户选择</span></a>
-    </li>
-    <li class="browser qqbrowser">
-        <a href="https://cdntip-net-production-file-1251013107.file.myqcloud.com/myapp/rcps/d/85000/QQBrowser_subid@100002_urlid@100002.exe" id="browser-qqbrowser-link"><img src="images/qqbrowser.png" width="34" height="34" alt="QQ浏览器9"/>QQ浏览器9<span id="browser-qqbrowser-badge">腾讯用户推荐</span></a>
-    </li>
+
+
     <li class="browser clearleft"></li>
 </ul>
 <!-- after-browser -->
@@ -55,27 +49,31 @@
 <h2>升级提示跳转代码</h2>
 <p>网站在没有兼容的低版本IE中往往都是错版，所以检测到是低版本IE时直接跳转到升级页面，节省了不必要的资源加载，降低了网站服务器开销。去除冗余字符之后，便有了这段简洁优雅的代码。</p>
 <p><code>&lt;script&gt;/*@cc_on window.location.href=&quot;https://support.dmeng.net/upgrade-your-browser.html?referrer=&quot;+encodeURIComponent(window.location.href); @*/&lt;/script&gt;</code></p>
-<p>更多用法及详细说明请点击“<a href="https://support.dmeng.net/ie-update-warning.html" target="_self">旧版 IE 升级提示跳转代码</a>”查看。<a href="https://support.dmeng.net/upgrade-your-browser.html" target="_self">查看升级提示页</a></p>
+<p>更多用法及详细说明请点击“<a href="ie-update-warning.html" target="_self">旧版 IE 升级提示跳转代码</a>”查看。<a href="upgrade-your-browser.html" target="_self">查看升级提示页</a></p>
 <div class="hr"></div>
 <h2>升级提示弹窗代码 <img src="images/new.png" width="23" height="9" alt="new" /></h2>
 <p>为兼容更多场景，旧版IE淘汰行动已推出弹窗代码。弹窗代码与跳转代码相比，弹窗代码的优点是可在用户不跳出网站的前提下进行旧版IE浏览器提示升级，同时还提供双核浏览器切换内核示意图，引导用户切换至极速内核达到正常访问的效果，有效遏止流量流失。</p>
 <p><pre><code>&lt;script&gt;/*@cc_on document.write(&#x27;\x3Cscript id=&quot;_iealwn_js&quot; src=&quot;https://support.dmeng.net/ie-alert-warning/latest.js&quot;&gt;\x3C/script&gt;&#x27;); @*/&lt;/script&gt;</code></pre></p>
-<p>更多用法及详细说明请点击“<a href="https://support.dmeng.net/ie-alert-warning.html" target="_self">旧版 IE 升级提示弹窗代码</a>”查看。<a href="https://support.dmeng.net/ie-alert-warning-example.html" target="_self">查看弹窗截图</a></p>
+<p>更多用法及详细说明请点击“<a href="ie-alert-warning.html" target="_self">旧版 IE 升级提示弹窗代码</a>”查看。<a href="ie-alert-warning-example.html" target="_self">查看弹窗截图</a></p>
 <div class="hr"></div>
-<h2>行动介绍</h2>
+<h2>本站是<a href="https://wuyuan.dev">孙悟元</a>的公益镜像站</h2>
+<div class="hr"></div>
+<h2>以下是原版行动介绍</h2>
+<h3>行动介绍</h3>
 <p>本项目为公共项目，升级提示代码及静态资源托管在腾讯云及阿里云并由腾讯云及阿里云提供极速访问。</p>
 <p>自2014年8月上线至今，已为58同城、学校安全教育平台、太原科技大学、北京高校教师党员在线、中国义乌政府门户、湛江市城市规划局、江西干部网络学院、西安市质量技术监督局、大连市干部在线学习中心、包头市产品质量计量检测所、海尔创客实验室、奇瑞新能源、西部航空、东风特种车、华农财产保险、五分旅游网、爱云校等八百多中小网站提供内页子频道升级提示或全站升级提示服务。</p>
 <div class="hr"></div>
+
 <h2>技术参考资料</h2>
 <ul>
-<li><a href="https://support.dmeng.net/x-ua-compatible.html">X-UA-Compatibility Meta Tag</a></li>
-<li><a href="https://support.dmeng.net/conditional-comment.html">条件注释说明</a></li>
-<li><a href="https://support.dmeng.net/360se-renderer.html">360浏览器内核控制标签meta说明</a></li>
+<li><a href="x-ua-compatible.html">X-UA-Compatibility Meta Tag</a></li>
+<li><a href="conditional-comment.html">条件注释说明</a></li>
+<li><a href="360se-renderer.html">360浏览器内核控制标签meta说明</a></li>
 </ul>
 <div class="hr"></div>
 <p>Copyright &copy; 2014 <script>document.write(' - ' + (new Date()).getFullYear())</script> End of IE SUPPORT. All Rights Reserved</p>
 </div>
 
 <div style="display:none !important"><script id="hello-world-js" src="js/hello.world.js"></script></div>
-<script>var lasturl = "https://support.dmeng.net/kill-old-versions-of-ie.html";</script> <script src="js/backup-need.js"></script> </body>
+<script>var lasturl = "kill-old-versions-of-ie.html";</script> <script src="js/backup-need.js"></script> </body>
 </html>
