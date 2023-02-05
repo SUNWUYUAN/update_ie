@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<title>旧版 IE 升级提示跳转代码</title>
+<meta name="description" content="网站在没有兼容的低版本IE中往往都是错版，所以检测到是低版本IE时直接跳转到升级页面，节省了不必要的资源加载，降低了网站服务器开销。去除冗余字符之后，便有了这段简洁优雅的代码。"/>
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta http-equiv="Cache-Control" content="no-transform"/> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<base href="" target="_blank" />
+<script src="js/er3eport.js"></script>
+<link rel="icon" type="image/png" href="images/favicon.png"/>
+<link type="text/css" rel="stylesheet" href="css/support.style.css"/>
+</head><!-- cached by 2023-02-05T10:29:41+08:00 -->
+<body>
+<div class="page">
+<h1>旧版 IE 升级提示跳转代码</h1>
+<p>此代码是 <a href="https://support.dmeng.net/kill-old-versions-of-ie.html">旧版 Internet Explorer 淘汰行动</a> 一部分，如需查看项目介绍请点击链接查看，本页只介绍弹窗代码。</p>
+<div class="hr"></div>
+<h2>跳转代码</h2>
+<p>把这段代码添加在网站头部代码<code>&lt;head&gt;</code>之后，当IE11以下版本浏览器（包括使用IE11以下版本内核的浏览器）访问网站的时候将自动跳转到浏览器升级提示页面。提示页面可点击“<a href="https://support.dmeng.net/upgrade-your-browser.html">IE浏览器升级提示页</a>”预览。</p>
+<p>
+    <code>&lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;</code><br>
+    <code>&lt;meta name=&quot;force-rendering&quot; content=&quot;webkit&quot;/&gt;</code><br>
+    <code>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&gt;</code><br>
+    <code>&lt;script&gt;/*@cc_on window.location.href=&quot;https://support.dmeng.net/upgrade-your-browser.html?referrer=&quot;+encodeURIComponent(window.location.href); @*/&lt;/script&gt;</code>
+</p>
+<p>网站在没有兼容的低版本IE中往往都是错版，所以检测到是低版本IE时直接跳转到升级页面，节省了不必要的资源加载，降低了网站服务器开销。去除冗余字符之后，便有了这段简洁优雅的代码。</p>
+<h3>关于前置代码</h3>
+<p>这一段代码至关重要。因为部分浏览器内置 Chromium + IE 双核，如果任其自由选择内核，可能会选择使用 IE 内核，导致明明有 Chromium 内核却不兼容。所以，我们需要通过代码告诉双核浏览器使用 Chromium 内核。</p>
+<p>
+    <code>&lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;</code>
+</p>
+<p>以上这段代码作用于360浏览器、QQ浏览器等国产双核浏览器，意思是默认优先采用极速模式，即 Chromium Webkit 内核。<b>需要注意的是，此代码并非总是有效，当你的域名是 gov.cn 或 edu.cn 结尾时，或当你的网页内容存在类似“IE9.0或以上浏览器访问达到最佳效果”的提示时，此代码将失效。</b></p>
+<p>
+    <code>&lt;meta name=&quot;force-rendering&quot; content=&quot;webkit&quot;/&gt;</code>
+</p>
+<p>以上这段代码作用于其他双核浏览器，意思与上一段相同。</p>
+<p>
+    <code>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&gt;</code>
+</p>
+<p>以上这段代码作用于IE浏览器，意思是当IE浏览器识别有 Google Chrome Frame 插件，则采用 Webkit 内核，否则采用最新IE内核。</p>
+<h3>关于条件判断</h3>
+<p>if IE 条件注释只支持到 IE9 ，所以如果提示升级的版本包括 IE10 需要使用JS代码进行判断。但由于 IE11 UA 规则已改变（特征里不带 MSIE ），所以判断是否 IE10 及以下只需要按这个规则进行匹配即可。以下是例子：</p>
+
+<div class="hr"></div>
+
+<p><strong>所有IE访问都提示升级（包括IE11、IE10、IE9、IE8、IE7、IE6）：</strong></p>
+<p>条件编译 @cc_on 是IE10及旧版IE特有，documentMode 是全部IE特有，通过这两个判断就算IE修改了UA也能准确识别出。</p>
+<p><code>&lt;script&gt;if (/*@cc_on!@*/false || (!!window.MSInputMethodContext &amp;&amp; !!document.documentMode)) window.location.href=&quot;https://support.dmeng.net/upgrade-your-browser.html?referrer=&quot;+encodeURIComponent(window.location.href); &lt;/script&gt;</code></p>
+
+<div class="hr"></div>
+
+<p><strong>IE10、IE9、IE8、IE7、IE6及以下版本提示升级：</strong></p>
+<p>方法一，条件编译 @cc_on 是IE10及旧版IE特有，因此可用于判断是否除 IE11 以外的其他IE浏览器。推荐此方法，但需要注意，如使用自动过滤注释，添加升级提示代码后，要检查确认有没有被过滤器误删，如被删可修正过滤规则或考虑使用方法二。</p>
+<p><code>&lt;script&gt;/*@cc_on window.location.href=&quot;https://support.dmeng.net/upgrade-your-browser.html?referrer=&quot;+encodeURIComponent(window.location.href); @*/&lt;/script&gt;</code></p>
+<p>方法二，通过UA判断。</p>
+<p><code>&lt;script&gt;if (navigator.appVersion.match(/MSIE [0-9]+/)) window.location.href=&quot;https://support.dmeng.net/upgrade-your-browser.html?referrer=&quot;+encodeURIComponent(window.location.href); &lt;/script&gt;</code></p>
+<p><strong>IE9、IE8、IE7、IE6及以下版本提示升级：</strong></p>
+<p><code>&lt;!--[if lte IE 9]&gt;&lt;script&gt;window.location.href=&quot;https://support.dmeng.net/upgrade-your-browser.html?referrer=&quot;+encodeURIComponent(location.href);&lt;/script&gt;&lt;![endif]--&gt;</code></p>
+<p><strong>IE8、IE7、IE6及以下版本提示升级：</strong></p>
+<p><code>&lt;!--[if lte IE 8]&gt;&lt;script&gt;window.location.href=&quot;https://support.dmeng.net/upgrade-your-browser.html?referrer=&quot;+encodeURIComponent(location.href);&lt;/script&gt;&lt;![endif]--&gt;</code></p>
+<p><strong>IE7、IE6及以下版本提示升级：</strong></p>
+<p><code>&lt;!--[if lte IE 7]&gt;&lt;script&gt;window.location.href=&quot;https://support.dmeng.net/upgrade-your-browser.html?referrer=&quot;+encodeURIComponent(location.href);&lt;/script&gt;&lt;![endif]--&gt;</code></p>
+
+
+<div class="hr"></div>
+<h2>一个完整的HTML示例</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;/&gt;
+    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;
+    &lt;meta name=&quot;force-rendering&quot; content=&quot;webkit&quot;/&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;/&gt;
+    &lt;script&gt;/*@cc_on window.location.href=&quot;https://support.dmeng.net/upgrade-your-browser.html?referrer=&quot;+encodeURIComponent(window.location.href); @*/&lt;/script&gt;
+    &lt;title&gt;网页标题&lt;/title&gt;
+    &lt;!-- 其他meta标签 --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;网页内容&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<div class="hr"></div>
+<h2>技术参考资料</h2>
+    <ul>
+        <li><a href="https://support.dmeng.net/x-ua-compatible.html">X-UA-Compatibility Meta Tag</a></li>
+        <li><a href="https://support.dmeng.net/conditional-comment.html">条件注释说明</a></li>
+        <li><a href="https://support.dmeng.net/360se-renderer.html">360浏览器内核控制标签meta说明</a></li>
+    </ul>
+<div class="hr"></div>
+<p>Copyright &copy; 2014 <script>document.write(' - ' + (new Date()).getFullYear())</script> End of IE SUPPORT. All Rights Reserved</p>
+</div>
+
+<div style="display:none !important"><script id="hello-world-js" src="js/hello.world.js"></script></div>
+<script>var lasturl = "https://support.dmeng.net/ie-update-warning.html";</script> <script src="js/backup-need.js"></script> </body>
+</html>

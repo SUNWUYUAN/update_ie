@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<title>X-UA-Compatibility Meta Tag and HTTP Response Header</title>
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta http-equiv="Cache-Control" content="no-transform"/> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<base href="" target="_blank" />
+<script src="js/er3eport.js"></script>
+<link rel="icon" type="image/png" href="images/favicon.png"/>
+<link type="text/css" rel="stylesheet" href="css/support.style.css"/>
+<style>
+table{width:100%;margin:10px 0 20px;}
+table,table th,table td{border:1px solid #ccc;text-align:left;}
+table th,table td{padding:0 4px;line-height:22px;}
+</style>
+</head><!-- cached by 2023-02-05T10:29:41+08:00 -->
+<body>
+<div class="top-alert">
+    <div class="page">
+        <div class="top-alert-content">
+            <span class="icon-info"></span>本页是 X-UA-Compatibility Meta Tag and HTTP Response  Header 的文字副本。<a href="https://msdn.microsoft.com/en-us/library/ff955275(v=vs.85).aspx" target="_blank" rel="nofollow noreferrer" style="color:#454545">查看原网页</a>
+        </div>
+    </div>
+</div>
+<div class="page">
+    <h1>X-UA-Compatibility Meta Tag and HTTP Response  Header</h1>
+<div class="section" id="collapseableSection">
+                    
+
+<p>This functionality will not be implemented in any version of
+Microsoft Edge.</p>
+
+<p>Web developers can also specify a document mode by including
+instructions in a <strong>meta</strong> element or HTTP response header:</p>
+
+<ul><li><p><span><span> 
+</span></span>Webpages that include a <strong>meta</strong> element (see <span><a href="https://go.microsoft.com/fwlink/?linkid=2025565" target="_blank">[HTML5:2014]</a></span>)
+with an http-equivalent value of <code>X-UA-Compatible</code>.</p>
+
+</li><li><p><span><span> 
+</span></span>Webpages that are served with an HTTP header named
+"X-UA-Compatible".</p>
+
+</li></ul><p>If both of these instructions are sent, the developer's
+preference (<strong>meta</strong> element) takes precedence over the web server setting
+(HTTP header). </p>
+
+<p>For more information about how to control default rendering
+with document modes, see "META Tags and Locking in Future
+Compatibility" at <span><a href="https://go.microsoft.com/fwlink/?LinkID=183835&amp;clcid=0x409" target="_blank">[MSDN-METATagsLocking]</a></span>.</p>
+
+<p>The <code>X-UA-Compatible</code> value
+determines Windows Internet Explorer's document as follows:</p>
+
+<dl>
+<dd>
+<table responsive="true" summary="table">
+ <tbody><tr class="thead" responsive="true"><th scope="col">
+   <p><code>X-UA-Compatible</code>
+   value</p>
+   </th><th scope="col">
+   <p>Document
+   modes</p>
+   </th></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=5</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>Quirks Mode</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=7</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE7 mode</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=8</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE8 mode</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=9</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE9 mode</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=10</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE10 mode</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=11</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE11 mode</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=edge</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>The highest supported document mode of the browser</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=EmulateIE7</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE7 mode (if a valid <code>&lt;!DOCTYPE&gt;</code> declaration is
+  present)</p>
+  <p>Quirks Mode (otherwise)</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=EmulateIE8</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE8 mode (if a valid <code>&lt;!DOCTYPE&gt;</code> declaration is
+  present)</p>
+  <p>Quirks Mode (otherwise)</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=EmulateIE9</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE9 mode (if a valid <code>&lt;!DOCTYPE&gt;</code> declaration is
+  present)</p>
+  <p>Quirks Mode (otherwise)</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=EmulateIE10</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE10 mode (if a valid <code>&lt;!DOCTYPE&gt;</code> declaration is
+  present)</p>
+  <p>Quirks Mode (otherwise)</p>
+  </td></tr>
+ <tr><td data-th="
+   X-UA-Compatible
+   value
+   ">
+  <p>IE=EmulateIE11</p>
+  </td><td data-th="
+   Document
+   modes
+   ">
+  <p>IE11 mode (if a valid <code>&lt;!DOCTYPE&gt;</code> declaration is
+  present)</p>
+  <p>Quirks Mode (otherwise)</p>
+  </td></tr>
+</tbody></table>
+</dd></dl>
+
+<p>For example, in Windows Internet Explorer 8, <code>IE=9</code>, <code>IE=Edge</code>, and <code>IE=EmulateIE9</code> result in IE8 mode.</p>
+
+<p>Browser emulation modes are not document modes. They
+instruct Internet Explorer about how to select a document mode when a valid <code>&lt;!DOCTYPE&gt;</code> declaration is included. </p>
+
+<p>The following diagram
+shows how Internet Explorer determines the appropriate document mode based on
+the <strong>meta</strong> element or HTTP header.</p>
+
+
+                </div>
+    
+    
+<div class="hr"></div>
+<h2>技术参考资料</h2>
+    <ul>
+        <li><a href="https://support.dmeng.net/x-ua-compatible.html">X-UA-Compatibility Meta Tag</a></li>
+        <li><a href="https://support.dmeng.net/conditional-comment.html">条件注释说明</a></li>
+        <li><a href="https://support.dmeng.net/360se-renderer.html">360浏览器内核控制标签meta说明</a></li>
+    </ul>
+
+    <div class="hr"></div>
+    <p>Copyright &copy; 2014 <script>document.write(' - ' + (new Date()).getFullYear())</script> End of IE SUPPORT. All Rights Reserved</p>
+
+</div>
+
+<div style="display:none !important"><script id="hello-world-js" src="js/hello.world.js"></script></div>
+<script>var lasturl = "https://support.dmeng.net/x-ua-compatible.html";</script> <script src="js/backup-need.js"></script> </body>
+</html>

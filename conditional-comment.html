@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<title>条件注释说明</title>
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta http-equiv="Cache-Control" content="no-transform"/> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<base href="" target="_blank" />
+<script src="js/er3eport.js"></script>
+<link rel="icon" type="image/png" href="images/favicon.png"/>
+<link type="text/css" rel="stylesheet" href="css/support.style.css"/>
+<style>
+table{width:100%;margin:10px 0 20px;}
+table,table th,table td{border:1px solid #ccc;text-align:left;}
+table th,table td{padding:0 4px;line-height:22px;}
+pre>code{padding:10px 20px;margin:0 0 15px 0}
+</style>
+</head><!-- cached by 2023-02-05T10:29:41+08:00 -->
+<body>
+<div class="top-alert">
+    <div class="page">
+        <div class="top-alert-content">
+            <span class="icon-info"></span>本页是 Wikipedia 条件注释 词条的文字副本。<a href="https://zh.wikipedia.org/wiki/%E6%9D%A1%E4%BB%B6%E6%B3%A8%E9%87%8A" target="_blank" rel="nofollow noreferrer" style="color:#454545">查看原网页</a>
+        </div>
+    </div>
+</div>
+<div class="page">
+    <h1>条件注释说明</h1>
+
+
+<div class="hr"></div><h2><span id="示例">示例</span></h2>
+<p>这里是一个演示条件注释如何工作的简单示例。
+</p>
+<div><pre><code><span class="c">&lt;!--[if IE 6]&gt;</span>
+<span class="c">&lt;p&gt;You are using Internet Explorer 6.&lt;/p&gt;</span>
+<span class="c">&lt;![endif]--&gt;</span>
+<span class="c">&lt;!--[if !IE]&gt;&lt;!--&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>You are not using Internet Explorer.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="c">&lt;!--&lt;![endif]--&gt;</span>
+</code></pre></div>
+<div class="hr"></div><h2><span id="句法">句法</span></h2>
+<p>有两种“条件注释”：<i>下层显示 (downlevel revealed)</i>和<i>下层隐藏(downlevel hidden)</i>。
+</p><p>每种注释的基本句法如下表所示。第一条展示的是基本的 HTML 注释，被包括在内作为比较以及用以说明被每种条件注释使用的不同句法。
+</p>
+<table>
+<tbody><tr>
+<th>注释类型
+</th>
+<th>句法或可能取值
+</th></tr>
+<tr>
+<td>标准 HTML 注释
+</td>
+<td>&lt;!--&nbsp;Comment content &nbsp;--&gt;
+</td></tr>
+<tr>
+<td>downlevel-hidden
+</td>
+<td>&lt;!--[if <i>expression</i>]&gt; <i>HTML</i> &lt;![endif]--&gt;
+</td></tr>
+<tr>
+<td>downlevel-revealed
+</td>
+<td>&lt;![if <i>expression</i>]&gt; <i>HTML</i> &lt;![endif]&gt;
+</td></tr></tbody></table>
+<p>于每个条件注释之中的句法块内的 HTML 表示任意的 HTML 内容块，包括脚本。两种条件注释均使用条件<b>表达式</b>以指示注释块内的内容应该被解析还是被忽略。条件表达式由特性，操作符，和/或决定于其特性的值组成。下表展示了支持的特性并描述了每种特性支持的值。
+</p>
+<table>
+<tbody><tr>
+<th>项目
+</th>
+<th>示例
+</th>
+<th>说明
+</th></tr>
+<tr>
+<td>IE
+</td>
+<td>[if IE]
+</td>
+<td>字符串 "IE" 是一种对应于用以浏览网页的 Internet Explorer 的版本的一种<i>特性</i>。
+</td></tr>
+<tr>
+<td>value
+</td>
+<td>[if IE 7]
+</td>
+<td>一个对应于浏览器<i>版本</i>的整数或浮点数。返回一个布尔值，版本号和浏览器版本相匹配时为 true。更多信息参见版本向量（en:Version vector）。
+</td></tr>
+<tr>
+<td>WindowsEdition
+</td>
+<td>[if WindowsEdition]
+</td>
+<td>适用于 Windows 7 上的 Internet Explorer 8。字符串 "WindowsEdition" 是一种对应于用以浏览该网页的 Microsoft Windows 版本的<i>特性</i>。
+</td></tr>
+<tr>
+<td>value
+</td>
+<td>[if WindowsEdition 1]
+</td>
+<td>一个对应于用以浏览该网页的 Windows 的<i>版本</i>的整数。返回一个布尔值，数值和使用的版本相匹配时为真 true。关于所支持的值和它们所描述的版本的更多信息，参见GetProductInfo 函数的 <i>pdwReturnedProductType</i> 参数。
+</td></tr>
+<tr>
+<td>true
+</td>
+<td>[if true]
+</td>
+<td>永远等价于 true.
+</td></tr>
+<tr>
+<td>false
+</td>
+<td>[if false]
+</td>
+<td>永远等价于 false.
+</td></tr></tbody></table>
+<p>可用于创造条件注释的算符如下表。
+</p>
+<table>
+<tbody><tr>
+<th>项目
+</th>
+<th>示例
+</th>
+<th>说明
+</th></tr>
+<tr>
+<td>!
+</td>
+<td>[if !IE]
+</td>
+<td>NOT 运算符。这被放在 <i>特性</i>, <i>算符</i>, 或者 <i>子表达式</i> 的前面以反转该表达式的布尔值含义。
+</td></tr>
+<tr>
+<td>lt
+</td>
+<td>[if lt IE 5.5]
+</td>
+<td>小于运算符。第一项小于第二项时返回 true。
+</td></tr>
+<tr>
+<td>lte
+</td>
+<td>[if lte IE 6]
+</td>
+<td>小于或等于运算符。第一项小于或等于第二项时返回 true。
+</td></tr>
+<tr>
+<td>gt
+</td>
+<td>[if gt IE 5]
+</td>
+<td>大于运算符。第一项大于第二项时返回 true。
+</td></tr>
+<tr>
+<td>gte
+</td>
+<td>[if gte IE 7]
+</td>
+<td>大于或等于运算符。第一项大于或等于第二项时返回 true。
+</td></tr>
+<tr>
+<td>( )
+</td>
+<td>[if&nbsp;!(IE 7)]
+</td>
+<td>子表达式运算符。用以连接布尔算符以创造更加复杂的表达式。
+</td></tr>
+<tr>
+<td>&amp;
+</td>
+<td>[if (gt IE 5)&amp;(lt IE 7)]
+</td>
+<td>AND 运算符。所有子表达式为真时返回 true。
+</td></tr>
+<tr>
+<td>|
+</td>
+<td>[if (IE 6)|(IE 7)]
+</td>
+<td>OR 运算符。子表达式任意一个为真时返回 true。
+</td></tr></tbody></table>
+<h3><span id="下层隐藏的条件注释">下层隐藏的条件注释</span></h3>
+<p>如下是两个“下层隐藏”条件注释的示例。
+</p>
+<div><pre><code><span></span><span class="c">&lt;!--[if IE 8]&gt;</span>
+<span class="c">&lt;link href="ie8only.css" rel="stylesheet"&gt;</span>
+<span class="c">&lt;![endif]--&gt;</span>
+</code></pre></div>
+<p>或者
+</p>
+<div><pre><code><span></span><span class="c">&lt;!--[if lte IE 7]&gt;</span>
+<span class="c">&lt;style&gt;</span>
+<span class="c">/* CSS here */</span>
+<span class="c">&lt;/style&gt;</span>
+<span class="c">&lt;![endif]--&gt;</span>
+</code></pre></div>
+<p>第一个示例中的指令将会让 IE 8 读取指定的 CSS 文件，而 IE 7 或者其它版本的 IE 将会忽略它。非 IE 的浏览器同样会把它忽略因为它看起来像一条标准的 HTML 注释。第二条示例里的标记将会让 IE 5 至 7 读取其内的 CSS 样式。通过对这种标记的不同的使用你也可以挑出 IE 6, IE 5 或者比指定版本更新（大）或更旧（小）版本的 IE。
+</p>
+<h3><span id="下层显示的条件注释">下层显示的条件注释</span></h3>
+<p>如下是一个“下层显示”条件“注释”的示例，它除了误导向的名字之外，根本<i>不是一个 (X)HTML</i> 注释，使用默认的微软语法：
+</p>
+<div><pre><code><span></span><span class="cp">&lt;![if !IE]&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"non-ie.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span><span class="p">&gt;</span>
+<span class="cp">&lt;![endif]&gt;</span>
+</code></pre></div>
+<p>这个示例展示了应该仅对非 IE 浏览器暴露的内容，由于该条件对 IE 为假（并且因此该内容被忽略），而这些标签自身在非 IE 浏览器中是无法识别的（并因此被忽略）。这不是有效的 HTML 或 XHTML。
+</p><p>微软承认这种句法不是标准化的标记，意图是这些标记被其它浏览器忽视并暴露其中的内容。为了确保与 W3C 标准的兼容，一些网页开发者使用了下层显示的条件注释的一种替代性的技巧。
+</p>
+<div><pre><code><span></span><span class="c">&lt;!--[if !IE]&gt;--&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"non-ie.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span><span class="p">&gt;</span>
+<span class="c">&lt;!--&lt;![endif]--&gt;</span>
+</code></pre></div>
+<p>虽然结构上有些令人困惑，这种具体的句法是有效的 (X)HTML 且对为非 IE 浏览器准备的有条件的片段是有用的；但如果其中的条件等价于 <i>true</i>（例如，如果写意图在非 IE 浏览器和一些版本的 IE 上显示的代码），IE 将会显示于 HTML 内容前出现的“--&gt;”。这个问题通过对原来的“--&gt;”之前加一个“&lt;!”很容易解决，如下所示：
+</p>
+<div><pre><code><span></span><span class="c">&lt;!--[if gt IE 6]&gt;&lt;!--&gt;</span>
+This code displays on non-IE browsers and on IE 7 or higher.
+<span class="c">&lt;!--&lt;![endif]--&gt;</span>
+</code></pre></div>
+<p>这个额外的“&lt;!”被非 IE 的浏览器忽略；它同样会被 IE 忽略而无论条件，因为如果为假，条件注释里面的一切都会被忽略，而如果为真，导致的标签 <code>&lt;!--&gt;</code> 是一条空注释并因此被忽略。
+</p><p>这个方法尽管在目前（截至 IE 9）版本的 Internet Explorer 中仍然有用，无法保证未来的版本将会继续如此工作（ Internet Explorer 10 已取消条件注释的支持）。
+</p>
+<h3><span id="JScript_中的条件注释">JScript 中的条件注释</span></h3>
+<p>自 Internet Explorer 4 开始，存在一种于 JScript 之中加入条件注释的类似的专有的机理，名称是条件编译。
+代码示例：
+</p>
+<div><pre><code><span></span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="cm">/*@cc_on</span>
+<span class="cm">  document.write("You are using IE4 or higher");</span>
+<span class="cm">@*/</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div>
+<p>同样有一些预定义的变量，尽管随着微软改变 XP SP3 上的 IE 6 的 JScript 引擎，这些不再可以依赖，现在它如下所示：
+</p>
+<div><pre><code><span></span><span class="err">@</span><span class="nx">_jscript_version</span> <span class="o">==</span> <span class="mf">5.7</span>
+</code></pre></div>
+<p>其结果是，利用条件编译侦测 IE 6 的方法如下：
+</p>
+<div><pre><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="cm">/*@cc_on</span>
+
+<span class="cm">  @if (@_jscript_version == 10)</span>
+<span class="cm">    document.write("You are using IE10");</span>
+
+<span class="cm">  @elif (@_jscript_version == 9)</span>
+<span class="cm">    document.write("You are using IE9");</span>
+<span class="cm">    </span>
+<span class="cm">  @elif (@_jscript_version == 5.8)</span>
+<span class="cm">    document.write("You are using IE8");</span>
+<span class="cm">    </span>
+<span class="cm">  @elif (@_jscript_version == 5.7 &amp;&amp; window.XMLHttpRequest)</span>
+<span class="cm">    document.write("You are using IE7");</span>
+
+<span class="cm">  @elif (@_jscript_version == 5.6 || (@_jscript_version == 5.7 &amp;&amp; !window.XMLHttpRequest))</span>
+<span class="cm">    document.write("You are using IE6");</span>
+
+<span class="cm">  @elif (@_jscript_version == 5.5)</span>
+<span class="cm">    document.write("You are using IE5.5");</span>
+
+<span class="cm">  @else</span>
+<span class="cm">    document.write("You are using IE5 or older");</span>
+
+<span class="cm">  @end</span>
+
+<span class="cm">@*/</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div>
+
+    
+    
+    
+<div class="hr"></div>
+<h2>技术参考资料</h2>
+    <ul>
+        <li><a href="https://support.dmeng.net/x-ua-compatible.html">X-UA-Compatibility Meta Tag</a></li>
+        <li><a href="https://support.dmeng.net/conditional-comment.html">条件注释说明</a></li>
+        <li><a href="https://support.dmeng.net/360se-renderer.html">360浏览器内核控制标签meta说明</a></li>
+    </ul>
+
+    <div class="hr"></div>
+    <p>Copyright &copy; 2014 <script>document.write(' - ' + (new Date()).getFullYear())</script> End of IE SUPPORT. All Rights Reserved</p>
+
+</div>
+
+<div style="display:none !important"><script id="hello-world-js" src="js/hello.world.js"></script></div>
+<script>var lasturl = "https://support.dmeng.net/conditional-comment.html";</script> <script src="js/backup-need.js"></script> </body>
+</html>

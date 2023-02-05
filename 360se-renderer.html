@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<title>360浏览器内核控制标签meta说明</title>
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta http-equiv="Cache-Control" content="no-transform"/> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<base href="" target="_blank" />
+<script src="js/er3eport.js"></script>
+<link rel="icon" type="image/png" href="images/favicon.png"/>
+<link type="text/css" rel="stylesheet" href="css/support.style.css"/>
+<style>
+table{width:100%;margin:10px 0 20px;}
+table,table th,table td{border:1px solid #ccc;text-align:left;}
+table th,table td{padding:0 4px;line-height:22px;}
+</style>
+</head><!-- cached by 2023-02-05T10:29:41+08:00 -->
+<body>
+<div class="top-alert">
+    <div class="page">
+        <div class="top-alert-content">
+            <span class="icon-info"></span>本页是360浏览器内核控制标签meta说明的文字副本。<a href="http://se.360.cn/v6/help/meta.html" target="_blank" rel="nofollow noreferrer" style="color:#454545">查看原网页</a>
+        </div>
+    </div>
+</div>
+<div class="page">
+    <h1>360浏览器内核控制标签meta说明</h1>
+
+    <h2>背景介绍</h2>
+
+    <p>由于众所周知的原因，国内的主流浏览器都是双核浏览器：基于Webkit的内核用于常用网站的高速浏览，基于IE的内核主要用于部分网银、政府、办公系统等网站的正常使用。以360浏览器为例，我们优先通过Webkit内核渲染主流网站，只有少量的网站通过IE内核渲染，以保证页面兼容性。在过去很长一段时间里，我们的主要控制手段是一个几百k大小的网址库，它是通过长期人工收集来进行运营的。</p>
+
+    <div class="hr"></div>
+
+    <p>尽管我们努力通过用户反馈、代码标签智能判断等各种手段来提高浏览器自动切核的准确率，但在很多情况下，仍然无法达到百份百正确。因此，我们新增了一个控制手段——“内核控制标签”，只要你在自己的网站里增加一个meta标签，告诉360浏览器这个网站应该用哪个内核渲染，那么360浏览器就会在读取到这个标签后，立即切换对应的内核，并将这个行为应用于这个二级域名下所有网址。</p>
+
+    <p>目前该功能已经在所有的360浏览器中实现，我们也建议其它浏览器厂商一起支持这个标签，让其成为行业标准。</p>
+
+    <p><strong>注意：360浏览器规定内核的代码并非总是有效，当你的域名是 gov.cn 或 edu.cn 结尾时，或当你的网页内容存在类似“IE9.0或以上浏览器访问达到最佳效果”的提示时，此代码将失效。</strong></p>
+    <div class="hr"></div>
+
+    <h2>代码示例</h2>
+
+    <p>浏览器默认内核的指定只需在head标签中添加一行代码即可：</p>
+    <p>若页面需默认用极速核，增加标签：<code>&lt;meta name="renderer" content="webkit"&gt;</code></p>
+    <p>若页面需默认用ie兼容内核，增加标签：<code>&lt;meta name="renderer" content="ie-comp"&gt;</code></p>
+    <p>若页面需默认用ie标准内核，增加标签：<code>&lt;meta name="renderer" content="ie-stand"&gt;</code></p>
+    <p><code>content</code> 的取值为 <code>webkit</code>, <code>ie-comp</code>, <code>ie-stand </code>之一，区分大小写，分别代表用 <strong>webkit 内核</strong>，<strong>IE 兼容内核</strong>，<strong>IE 标准内核</strong>。</p>
+
+    <div class="hr"></div>
+
+    <h2>各渲染内核的技术细节</h2>
+
+    <table class="info_table">
+        <tr>
+            <th>内核</th>
+            <td>Webkit</td>
+            <td>IE兼容</td>
+            <td>IE标准</td>
+        </tr>
+        <tr>
+            <th>内核版本</th>
+            <td>Chrome 45</td>
+            <td>IE6/7</td>
+            <td>IE9/IE10/IE11(取决于用户的IE)</td>
+        </tr>
+        <tr>
+            <th>HTML5支持</th>
+            <td>YES</td>
+            <td>NO</td>
+            <td>YES</td>
+        </tr>
+        <tr>
+            <th>ActiveX控件支持</th>
+            <td>NO</td>
+            <td>YES</td>
+            <td>YES</td>
+        </tr>
+    </table>
+
+
+    <div class="hr"></div>
+
+    <h2>各内核UA示例</h2>
+    <p>无论使用什么内核，360 浏览器 UA 里都没有 360 浏览器标识。</p>
+
+    <p>
+    <strong>Webkit 内核 UA 示例</strong>
+    <br>
+    User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1
+    </p>
+    
+    <p>
+    <strong>IE 兼容内核 UA 示例</strong>
+    <br>
+    User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/6.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0;  .NET4.0C; .NET4.0E; InfoPath.3)
+    </p>
+    
+    <p>
+    <strong>IE 标准内核 UA 示例</strong>
+    <br>
+    User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)
+    </p>
+    
+    <div class="hr"></div>
+    <h2>技术参考资料</h2>
+    <ul>
+        <li><a href="https://support.dmeng.net/x-ua-compatible.html">X-UA-Compatibility Meta Tag</a></li>
+        <li><a href="https://support.dmeng.net/conditional-comment.html">条件注释说明</a></li>
+        <li><a href="https://support.dmeng.net/360se-renderer.html">360浏览器内核控制标签meta说明</a></li>
+    </ul>
+
+    <div class="hr"></div>
+    <p>Copyright &copy; 2014 <script>document.write(' - ' + (new Date()).getFullYear())</script> End of IE SUPPORT. All Rights Reserved</p>
+</div>
+
+<div style="display:none !important"><script id="hello-world-js" src="js/hello.world.js"></script></div>
+<script>var lasturl = "https://support.dmeng.net/360se-renderer.html";</script> <script src="js/backup-need.js"></script> </body>
+</html>
